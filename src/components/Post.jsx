@@ -3,11 +3,11 @@ import React from 'react'
 import moment from 'moment'
 import { firestore } from '../firebase'
 
-const Post = ({ id, title, content, user, createdAt, stars, comments, onRemove }) => {
+const Post = ({ id, title, content, user, createdAt, stars, comments }) => {
 
-  const docRef = firestore.doc(`posts/${id}`)
-  // const remove = () => docRef.delete()
-  const star = docRef.update({ stars: stars + 1 })
+  const postRef = firestore.doc(`posts/${id}`)
+  const remove = () => postRef.delete()
+  const star = () => postRef.update({ stars: stars + 1 })
 
   return (
     <article className="Post">
@@ -34,7 +34,7 @@ const Post = ({ id, title, content, user, createdAt, stars, comments, onRemove }
         </div>
         <div>
           <button className="star" onClick={star}>Star</button>
-          <button className="delete" onClick={() => onRemove(id)}>Delete</button>
+          <button className="delete" onClick={remove}>Delete</button>
         </div>
       </div>
     </article>

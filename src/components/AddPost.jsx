@@ -12,11 +12,10 @@ class AddPost extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    const { onCreate } = this.props;
+    //const { onCreate } = this.props;
     const { title, content } = this.state;
 
     const post = {
-      id: Date.now().toString(),
       title,
       content,
       user: {
@@ -30,8 +29,9 @@ class AddPost extends Component {
       createdAt: new Date(),
     }
 
-    onCreate(post);
+    //onCreate(post);
     //firestore.collection('posts').doc(post.id).set(post)
+    firestore.collection('posts').add(post)
 
     this.setState({ title: '', content: '' });
   };
