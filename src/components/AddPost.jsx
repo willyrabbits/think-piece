@@ -23,7 +23,7 @@ class AddPost extends Component {
         uid,
         displayName,
         email,
-        photoURL,
+        photoURL
       },
       favorites: 0,
       comments: 0,
